@@ -23,10 +23,11 @@ import java.util.HashMap;
  */
 public class GameFragment extends Fragment {
 
-
+    private MentorDataControler mdc;
 
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        mdc = new MentorDataControler("people");
     }
     Person p;
 
@@ -50,7 +51,7 @@ public class GameFragment extends Fragment {
         userName.setText("Chloe Vilain");
         answerFirst.setText("My favorite required Olin class is UOCD");
         answerSecond.setText("On a weekend night, I'm hanging out with friends");
-        answerThird.setText("Mentee");
+        //answerThird.setText("Mentee");
 
 
         starButton.setOnClickListener(new View.OnClickListener() {
@@ -68,21 +69,23 @@ public class GameFragment extends Fragment {
             public boolean onTouch(View v, MotionEvent event) {
                 p = getNewPerson();
                 if (p!= null){
-                userName.setText(p.name);
-                answerFirst.setText("My favorite Olin Requirement is " + p.favoriteClass);
-                answerSecond.setText("On a weekend I am " + p.weekend);
-                sizeBar.setProgress(p.size);
-                techBar.setProgress(p.tech);
-                if (p.mentee == true){
-                    if (p.mentor == true) {
+                userName.setText(p.getName());
+                answerFirst.setText("My favorite Olin Requirement is " + p.getFavoriteClass());
+                answerSecond.setText("On a weekend I am " + p.getWeekend());
+                sizeBar.setProgress(p.getSize());
+                techBar.setProgress(p.getTech());
+                    /*
+                if (p.isMentee() == true){
+                    if (p.isMentor() == true) {
                         answerThird.setText("Mentor, Mentee");
                     }
                     answerThird.setText("Mentee");
                 }
                 else {
                     answerThird.setText("Mentor");
+                }*/
                 }
-                }
+
 
                 Log.d("Chloe", "detected");
                 return false;
@@ -92,7 +95,7 @@ public class GameFragment extends Fragment {
         return v;
     }
     public Person getNewPerson(){
-        return null;
+        return mdc.getEntry();
     }
     public void setAttributes(Person p){
 

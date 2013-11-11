@@ -26,7 +26,7 @@ public class FavoritesFragment extends Fragment{
         List<Person> people = ((FeedActivity)getActivity()).getFavorites();
         List<FeedItem> sampleData = new ArrayList<FeedItem>();
         for (Person p: people){
-            sampleData.add(new FeedItem(p.name, p.name));
+            sampleData.add(new FeedItem(p.getName(), p.getName()));
         }
 
 

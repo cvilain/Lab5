@@ -17,11 +17,17 @@ import android.widget.TextView;
 /**
  * Created by Chloe Local on 11/3/13.
  */
-public class NewUserActivity extends Activity{
+public class NewUserActivity extends Activity {
+
+    private MentorDataControler mdc;
 
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.new_account_activity);
+        mdc = new MentorDataControler("people");
+        mdc.putNewEntry(new Person("William","ModSim","Playing games and coding",40,70,false,true,false));
+
+
 
 
     /*public View onCreateView(LayoutInflater inflater, ViewGroup container,
